@@ -117,7 +117,7 @@ class Post extends Model implements HasMedia
         $this->addMediaCollection(config('nova-blogify.image_settings.collection'))
             ->useDisk(config('nova-blogify.image_settings.disk'))
             ->acceptsFile(function (File $file) {
-                return $file->mimeType === 'image/jpeg';
+                return in_array($file->mimeType, array('image/jpeg', 'image/png'));
             })
             ->singleFile();
     }
